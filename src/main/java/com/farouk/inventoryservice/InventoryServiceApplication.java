@@ -20,12 +20,14 @@ public class InventoryServiceApplication {
                             RepositoryRestConfiguration restConfiguration){
         restConfiguration.exposeIdsFor(Product.class);
         return args -> {
-            productRepository.save(new Product(null,"Ordinateur",788,12));
-            productRepository.save(new Product(null,"Imprimante",88,129));
-            productRepository.save(new Product(null,"Smartphone",1288,112));
-            productRepository.findAll().forEach(product -> {
-                System.out.println(product.getName());
-            });
+            productRepository.save(new Product(null,"Ordinateur",788,12, true));
+            productRepository.save(new Product(null,"Imprimante",288,129,false));
+            productRepository.save(new Product(null,"Smartphone",1288,112, true));
+            productRepository.save(new Product(null,"Table",500,85,false));
+            productRepository.save(new Product(null,"Bureau",700,52, true));
+            productRepository.save(new Product(null,"Projecteur",1560,41, true));
+            productRepository.save(new Product(null,"Laptop",5890,44,false));
+            productRepository.findAll().forEach(product -> System.out.println(product.getName()));
         };
     }
 }
